@@ -1,1 +1,1 @@
-Freed soft ware, fucking cool!
+Free software, fucking cool!
