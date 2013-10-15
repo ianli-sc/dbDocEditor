@@ -486,7 +486,7 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: 18px;
+  line-height: 26px;
 }
 ul.unstyled,
 ol.unstyled {
@@ -586,7 +586,8 @@ pre {
   border-radius: 3px;
 }
 code {
-  padding: 3px 4px;
+  padding: 0 4px;
+  margin: 3px;
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;

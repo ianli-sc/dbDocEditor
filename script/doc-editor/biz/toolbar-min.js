@@ -71,20 +71,21 @@ KISSY.add('doc-editor/biz/toolbar', function(S, DOM, Event, Anim,
                     '*display' : 'inline',
                     'opacity' : 1
                 }, 0.3).run();
-                //隐藏文档修改器,显示代码修改器
-//                var docEditor = DOM.get('#docEditor');
-//                new Anim(docEditor, {
-//                    'opacity' : 0
-//                }, 0.3, 'easing', function() {
-//                    DOM.css(docEditor, {
-//                        'display' : 'none'
-//                    });
-//                }, 0.3).run();
+
                 var codeEditor = DOM.get('#editor');
                 new Anim(codeEditor, {
                     'opacity' : 1,
                     'display' : 'block'
                 }, 0.3, 'easing').run();
+
+                //隐藏 修改代码 的按钮
+                new Anim(changeCode, {
+                    'opacity' : 0
+                }, 0.3, 'easing', function(){
+                    DOM.css(changeCode, {
+                        'display' : 'none'
+                    });
+                }, 0.3).run();
             });
             /**
              * 保存修改。TODO
@@ -112,6 +113,12 @@ KISSY.add('doc-editor/biz/toolbar', function(S, DOM, Event, Anim,
                 }).run();
                 var editor = Code.editor;
                 editor.setReadOnly(true);
+                //显示 修改代码 的按钮
+                new Anim(changeCode, {
+                    'opacity' : 1,
+                    'display' : 'inline-block',
+                    '*display' : 'inline',
+                }, 0.3, 'easing').run();
                 //至于是否还原修改的内容，因涉及到重新定位的问题而暂时不处理
                 //TODO
             });
@@ -124,15 +131,6 @@ KISSY.add('doc-editor/biz/toolbar', function(S, DOM, Event, Anim,
             Event.on(changeDoc, 'click', function(e) {
                 var url = Preview.url;
                 Doc.loadData(url);
-//                //显示文档编辑器，就隐藏code编辑器
-//                var codeEditor = DOM.get('#editor');
-//                new Anim(codeEditor, {
-//                    'opacity' : 0
-//                }, 0.3, 'easing', function() {
-//                    DOM.css(codeEditor, {
-//                        'display' : 'none'
-//                    });
-//                }).run();
 
                 new Anim(saveDoc, {
                     'display' : 'inline-block',

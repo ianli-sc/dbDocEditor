@@ -366,7 +366,16 @@ function createDocFile(path, res) {
     //not able to create file with out folder of parent
     var lastIndex = path.lastIndexOf('/');
     var dir = path.substring(0, lastIndex);
-    fs.mkdirSync(dir);
+    //./doc/buy-order/src
+    var pathArray = dir.split('/');
+    var curPath = '';
+
+    pathArray.forEach(function(pathName) {
+        curPath += pathName + '/';
+        if(!fs.existsSync(curPath)) {
+            fs.mkdirSync(curPath);
+        }
+    });
 
     fs.writeFileSync(path, '# Insert Title here');
     var fileData = fs.readFileSync(path);
