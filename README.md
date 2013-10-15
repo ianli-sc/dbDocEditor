@@ -1,1 +1,1 @@
- Free software, fucking cool!
+run node web-server.js
